@@ -1,9 +1,9 @@
 import React from "react";
 import Image from 'next/image';
-import upboxLogo from '../../images/upboxLogo.png';
-import topbar from '../../images/topbar.png';
+import upboxLogo from '../../images/upboxLogo.svg';
+import topbar from '../../images/topbar.svg';
 
-export default function Home() {
+export default function ContactNav() {
   return (
     <div className="navbar">
       <Image src={topbar}></Image>

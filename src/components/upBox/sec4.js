@@ -1,37 +1,39 @@
 import React from "react";
 import Image from 'next/image';
-import img1 from '../../images/img1.png';
-import img2 from '../../images/img2.png';
-import img3 from '../../images/img3.png';
-import img4 from '../../images/img4.png';
-import squig1 from '../../images/squig1.png';
-import squig2 from '../../images/squig2.png';
+import img1 from '../../images/img1.svg';
+import img2 from '../../images/img2.svg';
+import img3 from '../../images/img3.svg';
+import img4 from '../../images/img4.svg';
+import squig1 from '../../images/squig1.svg';
+import squig2 from '../../images/squig2.svg';
 
-export default function Home() {
+export default function Sec4() {
   return (
     <div className="sec4">
-      <Image className="sec4__squig1" src={squig1}></Image>
-      <Image className="sec4__squig2" src={squig2}></Image>
       <h1 className="sec4__title">Social Posts</h1>
-      <div className="sec4__img-block">
-        <div className="sec4__img-block1">
+      <div className="sec4__img-blocks">
+        <div className="sec4__img-block">
           <Image src={img1}></Image>
-          How to rock the lip look that turns heads
+          <p>How to rock the lip look that turns heads</p>
         </div>
-        <div className="sec4__img-block2">
+        <div className="sec4__img-block">
           <Image src={img2}></Image>
-          Find the perfect shade for the season
+          <p>Find the perfect shade for the season</p>
         </div>
-        <div className="sec4__img-block3">
+        <div className="sec4__img-block">
           <Image src={img3}></Image>
-          The 5 eye shadow secrets you never knew
+          <p>The 5 eye shadow secrets you never knew</p>
         </div>
-        <div className="sec4__img-block4">
+        <div className="sec4__img-block">
           <Image src={img4}></Image>
-          The pro-tips for at home hair dying
+          <p>The pro-tips for at home hair dying</p>
         </div>
       </div>
-      <button className="sec4__button">FOLLOW US ON INSTAGRAM</button>
+      <Image className="sec4__squig1" src={squig1}></Image>
+      <Image className="sec4__squig2" src={squig2}></Image>
+      <div className="sec4__button">
+        <button>FOLLOW US ON INSTAGRAM</button>
+      </div>
     </div>
   );
 }

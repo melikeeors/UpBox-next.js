@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from '../../../components/content/navbar';
-import PopUp from "../../../components/contact/pop-up";
-import Footer from '../../../components/upBox/footer';
+import ContactNav from '@/components/contact/contact-navbar';
+import PopUp from "@/components/contact/pop-up";
+import Footer from '@/components/upBox/footer';
 
-export default function contact() {
+export default function Contact() {
     return (
-        <body>
+        <>
             <nav>
-                <Navbar />
+                <ContactNav />
             </nav>
             <main>
                 <section>
@@ -17,6 +17,6 @@ export default function contact() {
                     <Footer />
                 </footer>
             </main>
-        </body>
+        </>
     );
-}
+} 

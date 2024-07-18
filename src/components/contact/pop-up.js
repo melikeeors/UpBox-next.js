@@ -2,7 +2,7 @@ import React from "react";
 import Image from 'next/image';
 import leftSide from '../../images/leftSide.png';
 
-export default function Home() {
+export default function PopUp() {
     return (
         <div className="pop-up">
             <div className="pop-up__center">
@@ -27,10 +27,8 @@ export default function Home() {
                         <input type="checkbox"></input>
                         <p className="pop-up__validations">This field is required</p>
                     </div>
-                    <button className="pop-up__button">
-                        Submit
-                        <p className="pop-up__confirmations">Thanks! We’ll get back to you soon.</p>
-                    </button>
+                    <button className="pop-up__button">Submit</button>
+                    <p className="pop-up__confirmations">Thanks! We’ll get back to you soon.</p>
                 </div>
             </div>
         </div>

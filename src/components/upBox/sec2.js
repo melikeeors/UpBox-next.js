@@ -2,7 +2,7 @@ import React from "react";
 import Image from 'next/image';
 import underline from '../../images/underline.png';
 
-export default function Home() {
+export default function Sec2() {
   return (
     <div className="sec2">
       <div className="sec2__header">
@@ -21,7 +21,7 @@ export default function Home() {
           <button>FIND YOUR BOX</button>
         </div>
       </div >
-      <p>Your plan auto-renews at the end of 30 days from the 1st day you signed-up.</p>
+      <p className="sec2__planInfo">Your plan auto-renews at the end of 30 days from the 1st day you signed-up.</p>
     </div>
   );
 }

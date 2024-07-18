@@ -1,0 +1,21 @@
+@use '../components/upBox/upBox.scss' as *;
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    p {
+        line-height: 2.5rem;
+    }
+}
+
+nav {
+    position: sticky;
+    top: 0%;
+    z-index: 10;
+}
+
+button:hover {
+    cursor: pointer;
+}
