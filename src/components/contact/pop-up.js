@@ -1,6 +1,7 @@
 import React from "react";
 import Image from 'next/image';
-import leftSide from '../../images/leftSide.png';
+import leftSide from '../../images/leftSide.svg';
+import bg from '../../images/bg.svg'
 
 export default function PopUp() {
     return (
@@ -13,24 +14,27 @@ export default function PopUp() {
                     <h1>Let's Chat!</h1>
                     <div className="pop-up__input-field">
                         <label>Email</label>
-                        <input type="email" placeholder="Enter your email"></input>
-                        <p className="pop-up__validations--invalid">Please enter a valid email address</p>
+                        <input className="pop-up__input-email" type="email" placeholder="Enter your email"></input>
+                        <p className="pop-up__validations">Please enter a valid email address</p>
                         <p className="pop-up__validations">This field is required</p>
                     </div>
-                    <div className="pop-up__text-area">
+                    <div className="pop-up__text-field">
                         <label>Message</label>
-                        <input type="text" placeholder="Enter your message here"></input>
+                        <textarea className="pop-up__input-text" type="text" placeholder="Enter your message here"></textarea>
                         <p className="pop-up__validations">This field is required</p>
                     </div>
-                    <div className="pop-up__checkbox">
+                    <div className="pop-up__checkbox-field">
                         <label>Opt-in to newsletter</label>
-                        <input type="checkbox"></input>
+                        <input className="pop-up__checkbox" type="checkbox"></input>
                         <p className="pop-up__validations">This field is required</p>
                     </div>
-                    <button className="pop-up__button">Submit</button>
+                    <div>
+                        <button className="pop-up__button">Submit</button>
+                    </div>
                     <p className="pop-up__confirmations">Thanks! We’ll get back to you soon.</p>
                 </div>
             </div>
+            <Image className="pop-up__bg" src={bg} layout="fill"></Image>
         </div>
     );
 }

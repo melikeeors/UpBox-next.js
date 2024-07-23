@@ -2,6 +2,7 @@ import React from "react";
 import Image from 'next/image';
 import upboxLogo from '../../images/upboxLogo.svg';
 import topbar from '../../images/topbar.svg';
+import { IoMdMenu } from "react-icons/io";
 
 export default function Navbar() {
   return (
@@ -19,6 +20,9 @@ export default function Navbar() {
           <h3>BATH</h3>
           <h3>SALE</h3>
           <button>LOG IN &gt;</button>
+        </div>
+        <div className="navbar__menu">
+          <IoMdMenu />
         </div>
       </div>
     </div>

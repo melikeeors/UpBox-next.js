@@ -2,20 +2,26 @@ import React from "react";
 import Image from 'next/image';
 import upboxLogo from '../../images/upboxLogo.svg';
 import topbar from '../../images/topbar.svg';
+import { IoMdMenu } from "react-icons/io";
 
 export default function ContactNav() {
   return (
     <div className="navbar">
-      <Image src={topbar}></Image>
-      <div className="navbar__logo">
-        <Image src={upboxLogo}></Image>
-        <h3>UPBOX</h3>
-      </div>
-      <div className="navbar__right-side">
-        <h3>MAKEUP</h3>
-        <h3>BATH</h3>
-        <h3>SALE</h3>
-        <button>LOG IN</button>
+      <Image className="navbar__topbar" src={topbar}></Image>
+      <div className="navbar__group">
+        <div className="navbar__logoGroup">
+          <Image className="navbar__logo" src={upboxLogo}></Image>
+          <h3 className="navbar__title">UPBOX</h3>
+        </div>
+        <div className="navbar__right-side">
+          <h3>MAKEUP</h3>
+          <h3>BATH</h3>
+          <h3>SALE</h3>
+          <button>LOG IN &gt;</button>
+        </div>
+        <div className="navbar__menu">
+          <IoMdMenu />
+        </div>
       </div>
     </div>
   );

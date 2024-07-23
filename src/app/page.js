@@ -5,6 +5,7 @@ import Sec2 from "../components/upBox/sec2";
 import Sec3 from "../components/upBox/sec3";
 import Sec4 from "../components/upBox/sec4";
 import Footer from "../components/upBox/footer";
+import '../styles/upBox.scss';
 
 export default function Home() {
   return (
@@ -13,23 +14,13 @@ export default function Home() {
         <Navbar />
       </nav>
       <main>
-        <section>
-          <Hero />
-        </section>
-        <section>
-          <Sec2 />
-        </section>
-        <section>
-          <Sec3 />
-        </section>
-        <section>
-          <Sec4 />
-        </section>
-        <section>
-          <footer>
-            <Footer />
-          </footer>
-        </section>
+        <Hero />
+        <Sec2 />
+        <Sec3 />
+        <Sec4 />
+        <footer>
+          <Footer />
+        </footer>
       </main>
     </body>
   );

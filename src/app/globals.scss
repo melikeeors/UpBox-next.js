@@ -1,9 +1,12 @@
-@use '../components/upBox/upBox.scss' as *;
+@use '../styles/upBox.scss' as *;
+//@use '../styles/contact.scss' as *;
 
+// Base styles
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: $font-sans;
 
     p {
         line-height: 2.5rem;

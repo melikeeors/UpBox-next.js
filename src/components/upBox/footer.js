@@ -59,8 +59,10 @@ export default function Footer() {
       <div className="footer__end">
         <p>© 2020 Quest AI. Upbox is a Sample Project and
           open source design project free for personal and commercial use.</p>
-        <a href="#">Terms</a>
-        <a href="#">Privacy Policy</a>
+        <div className="footer__a">
+          <a href="#">Terms</a>
+          <a href="#">Privacy Policy</a>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,455 @@
+@use "../styles/upBox.scss" as *;
+
+// Base styles
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-sans;
+
+    p {
+        line-height: 25px;
+    }
+}
+
+nav {
+    position: sticky;
+    top: 0%;
+    z-index: 10;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+// Navbar
+.navbar {
+    @include navbar();
+}
+
+// Pop up
+.pop-up {
+    letter-spacing: 1px;
+    height: 750px;
+
+    p {
+        margin: 0;
+    }
+
+    label {
+        font-size: 12px;
+        font-family: $font-sans;
+        margin: 5px 0;
+    }
+
+    &__center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        margin: 100px 200px;
+        background-color: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px);
+        width: 1100px;
+        height: 560px;
+    }
+
+    &__bg {
+        object-fit: cover;
+        margin-top: 95px;
+        height: 113% !important;
+    }
+
+    &__left-side {
+        margin: 0 20px;
+    }
+
+    &__right-side {
+        display: grid;
+        align-items: center;
+        margin: 0 20px;
+
+        h1 {
+            font-size: 46px;
+            font-family: $font-text;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__input-field,
+    &__text-field {
+        display: grid;
+        justify-items: start;
+        margin: 10px 0;
+    }
+
+    &__input-email,
+    &__input-text {
+        border: 3px solid #e7e7e7;
+        border-radius: 5px;
+        width: 419px;
+        background-color: #f3f3f3;
+        display: flex;
+        justify-content: start;
+        overflow: auto;
+        font-size: 14px;
+    }
+
+    &__input-email {
+        height: 40px;
+        padding-left: 10px;
+    }
+
+    &__input-text {
+        height: 134px;
+        resize: none;
+        font-weight: 500;
+        font-family: $font-sans;
+        padding: 10px;
+    }
+
+    &__checkbox-field {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__checkbox {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border: 2px solid gray;
+        border-radius: 5px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #fd7688;
+        display: inline-block;
+        position: relative;
+        font-size: 15px;
+        transition:
+            background-color 0.3s ease,
+            border-color 0.3s ease;
+
+        &:checked {
+            border-color: #fd7688;
+
+            &::after {
+                content: "✓"; // İşaretlendiğinde onay işareti
+                color: white;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 10px;
+            }
+        }
+    }
+
+    &__validations,
+    &__confirmations {
+        display: none;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: normal;
+    }
+
+    button {
+        @include pinkButton();
+        margin-bottom: 40px;
+        font-size: 12px;
+        border-radius: 10px;
+        padding: 7.5px 50px;
+    }
+}
+
+// Footer
+.footer {
+    @include footer();
+    position: relative;
+    margin: 25px;
+}
+
+// Tablet
+@media (max-width: 769px) and (min-width: 377px) {
+    // Navbar
+    .navbar {
+        &__topbar {
+            width: 768px;
+            height: 10px;
+            object-fit: cover;
+        }
+
+        &__group {
+            margin: 20px;
+        }
+
+        &__logo {
+            width: 37px;
+            height: 37px;
+        }
+
+        &__title {
+            margin-left: 5px;
+            font-size: 18px;
+            letter-spacing: 5px;
+        }
+
+        &__right-side {
+            h3,
+            button {
+                margin-left: 40px;
+                font-weight: 700;
+                font-size: 10px;
+            }
+            h3 {
+                letter-spacing: 1.5px;
+            }
+
+            button {
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    // Pop up
+    .pop-up {
+        height: 780px;
+
+        &__center {
+            margin: 70px 15px;
+            width: 734px;
+        }
+
+        &__bg {
+            height: 844px !important;
+        }
+
+        &__left-side {
+            width: 368px;
+            height: 481px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__right-side {
+            h1 {
+                font-size: 42px;
+            }
+        }
+
+        &__input-field,
+        &__text-field {
+            margin: 5px 0;
+        }
+
+        &__input-email,
+        &__input-text {
+            width: 257px;
+        }
+
+        &__input-text {
+            height: 134px;
+        }
+
+        &__validations,
+        &__confirmations {
+            color: #FF0340;
+        }
+
+        button {
+            padding: 7.5px 40px;
+        }
+    }
+
+    // Footer
+    .footer {
+        margin: 40px;
+
+        &__social {
+            margin-right: 30px;
+
+            a {
+                margin-left: 25px;
+            }
+        }
+
+        &__links {
+            display: grid;
+            align-items: start;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        &__link {
+            align-items: start;
+            justify-items: start;
+            letter-spacing: 1.2px;
+            padding-left: 50px;
+        }
+
+        &__end {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+
+            p {
+                margin-top: 20px;
+            }
+        }
+
+        &__a {
+            display: flex;
+            padding-right: 50px;
+            margin-top: 20px;
+        }
+    }
+}
+
+// Mobile
+@media (max-width: 376px) {
+    // Navbar
+    .navbar {
+        &__topbar {
+            width: 375px;
+            height: 10px;
+            object-fit: cover;
+        }
+
+        &__group {
+            margin: 0 20px;
+            align-items: center;
+        }
+
+        &__right-side {
+            display: none;
+        }
+
+        &__menu {
+            display: block;
+
+            svg {
+                width: 41px;
+                height: 30px;
+            }
+        }
+    }
+
+    // Pop up
+    .pop-up {
+        display: flex;
+        justify-content: center;
+        height: 725px;
+
+        &__center {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            justify-items: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 75px;
+            width: 341px;
+            height: 725px;
+        }
+
+        &__bg {
+            height: 704px !important;
+        }
+
+        &__left-side {
+            margin: 20px;
+
+            img {
+                width: 266px;
+                height: 158px;
+                object-fit: cover;
+            }
+        }
+
+        &__right-side {
+            h1 {
+                font-size: 42px;
+            }
+        }
+
+        &__input-field,
+        &__text-field,
+        &__checkbox-field {
+            margin-bottom: 25px;
+        }
+
+        &__input-email,
+        &__input-text {
+            width: 265px;
+        }
+
+        button {
+            padding: 7.5px 35px;
+        }
+    }
+
+
+    // Footer
+    .footer {
+        margin: 15px;
+        margin-top: 80px;
+
+        &__social {
+            display: none;
+        }
+
+        &__links {
+            display: grid;
+            align-items: start;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            margin: 0;
+        }
+
+        &__link {
+            font-size: 12px;
+            padding-right: 0px;
+            padding-left: 30px;
+            margin-bottom: 25px;
+
+            h4 {
+                font-size: 16px;
+            }
+
+            a {
+                line-height: 15px;
+            }
+        }
+
+        &__end {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            padding: 10px 30px;
+
+            p {
+                padding: 5px;
+                letter-spacing: 2px;
+                font-size: 11px;
+                line-height: normal;
+                font-weight: 500;
+            }
+        }
+
+        &__a {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                margin-top: 10px;
+            }
+        }
+    }
+}
