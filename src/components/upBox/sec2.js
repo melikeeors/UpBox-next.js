@@ -1,6 +1,6 @@
 import React from "react";
 import Image from 'next/image';
-import underline from '../../images/underline.png';
+import underline from '/public/images/underline.png';
 
 export default function Sec2() {
   return (

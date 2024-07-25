@@ -1,6 +1,6 @@
 import React from "react";
 import Image from 'next/image';
-import box from '../../images/box.svg';
+import box from '/public/images/box.svg';
 
 export default function Hero() {
   return (

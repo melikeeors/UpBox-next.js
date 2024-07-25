@@ -1,7 +1,7 @@
 import React from "react";
 import Image from 'next/image';
-import upboxLogo from '../../images/upboxLogo.svg';
-import topbar from '../../images/topbar.svg';
+import upboxLogo from '/public/images/upboxLogo.svg';
+import topbar from '/public/images/topbar.svg';
 import { IoMdMenu } from "react-icons/io";
 
 export default function ContactNav() {

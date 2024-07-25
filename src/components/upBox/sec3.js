@@ -1,9 +1,10 @@
 import React from "react";
 import Image from 'next/image';
-import underline1 from '../../images/underline1.png';
-import work1 from '../../images/work1.svg';
-import work2 from '../../images/work2.svg';
-import work3 from '../../images/work3.svg';
+import underline1 from '/public/images/underline1.png';
+import work1 from '/public/images/work1.svg';
+import work2 from '/public/images/work2.svg';
+import work2Mobile from '/public/images/work2-mobile.svg';
+import work3 from '/public/images/work3.svg';
 
 export default function Sec3() {
   return (
@@ -24,7 +25,8 @@ export default function Sec3() {
       </div>
       <div className="sec3__work2">
         <div className="sec3__img">
-          <Image src={work2}></Image>
+          <Image className="sec3__2" src={work2}></Image>
+          <Image className="sec3__2-mobile" src={work2Mobile}></Image>
         </div>
         <div className="sec3__text2">
           <h3>Review your custom box</h3>

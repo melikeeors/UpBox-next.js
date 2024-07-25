@@ -1,7 +1,7 @@
 import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';
-import upboxLogo from '../../images/upboxLogo.svg';
+import upboxLogo from '/public/images/upboxLogo.svg';
 import { BiLogoFacebookSquare } from "react-icons/bi";
 import { IoLogoInstagram } from "react-icons/io";
 import { FaSquareTwitter } from "react-icons/fa6";

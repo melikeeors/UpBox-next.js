@@ -1,11 +1,11 @@
 import React from "react";
 import Image from 'next/image';
-import img1 from '../../images/img1.svg';
-import img2 from '../../images/img2.svg';
-import img3 from '../../images/img3.svg';
-import img4 from '../../images/img4.svg';
-import squig1 from '../../images/squig1.svg';
-import squig2 from '../../images/squig2.svg';
+import img1 from '/public/images/img1.svg';
+import img2 from '/public/images/img2.svg';
+import img3 from '/public/images/img3.svg';
+import img4 from '/public/images/img4.svg';
+import squig1 from '/public/images/squig1.svg';
+import squig2 from '/public/images/squig2.svg';
 
 export default function Sec4() {
   return (
