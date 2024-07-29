@@ -31,10 +31,24 @@ $border-color: rgba(196, 196, 196, 0.3);
     letter-spacing: 1px;
 }
 
+@mixin navButton {
+    font-family: $font-sans;
+    font-size: 14px;
+    letter-spacing: 2px;
+    width: 150px;
+    margin-left: 60px;
+    font-weight: 400;
+    background-color: white;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 100px;
+}
+
 @mixin navbar() {
     display: grid;
     background-color: white;
     position: sticky;
+    overflow: hidden;
 
     &__topbar {
         width: 100%;
@@ -49,8 +63,8 @@ $border-color: rgba(196, 196, 196, 0.3);
 
     &__logoGroup {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        width: 100%;
 
         &:hover {
             cursor: pointer;
@@ -87,23 +101,61 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
 
         button {
-            font-family: $font-sans;
-            font-size: 14px;
-            letter-spacing: 2px;
-            margin-left: 60px;
-            font-weight: 400;
-            background-color: white;
-            padding: 10px 30px;
-            border: 2px solid black;
-            border-radius: 100px;
+            @include navButton();
         }
+    }
+
+    &__menu-container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__menu-button {
+        display: none;
     }
 
     &__menu {
         display: none;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition:
+            max-height 0.5s ease-in-out,
+            opacity 0.5s ease-in-out;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 10px 5px;
+            background-color: white;
+            //border-bottom: 1px solid $border-color;
+
+            &:hover {
+                font-style: italic;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        button {
+            @include navButton();
+            margin: 20px 0;
+            margin-left: 0;
+        }
     }
 
-    @media only screen and (max-width: 1201px) and (min-width: 901px) {
+    &__menu.open {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    @media only screen and (max-width: 1251px) and (min-width: 901px) {
         &__group {
             margin: 0px 30px;
         }
@@ -113,11 +165,18 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
 
         &__right-side {
-            transform: scale(0.9);
+            transform: scale(0.85);
+            margin-left: 10px;
+
+            h3,
+            button {
+                font-size: 14px;
+                margin-left: 40px;
+            }
         }
     }
 
-    @media only screen and (max-width: 901px) and (min-width: 601px) {
+    @media only screen and (max-width: 901px) and (min-width: 801px) {
         &__topbar {
             width: 100%;
             height: 10px;
@@ -156,35 +215,7 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 601px) and (min-width: 501px) {
-        overflow: hidden;
-        padding: 0;
-
-        &__topbar {
-            display: flex;
-            justify-content: space-between;
-            height: 5px;
-            object-fit: cover;
-        }
-
-        &__group {
-           margin: 10px;
-        }
-
-        &__title {
-            font-size: 12px;
-        }
-
-        &__right-side {
-            h3,
-            button {
-                margin-left: 20px;
-                font-size: 8px;
-            }
-        }
-    }
-
-    @media only screen and (max-width: 501px) {
+    @media only screen and (max-width: 801px) {
         &__topbar {
             width: 100%;
             height: 5px;
@@ -192,6 +223,7 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
 
         &__group {
+            display: grid;
             margin: 0 20px;
             align-items: center;
         }
@@ -200,13 +232,20 @@ $border-color: rgba(196, 196, 196, 0.3);
             display: none;
         }
 
-        &__menu {
+        &__menu-button {
             display: block;
+            position: absolute;
+            top: 30px;
+            right: 30px;
 
             svg {
-                width: 41px;
-                height: 30px;
+                width: 50px;
+                height: 35px;
             }
+        }
+
+        &__menu {
+            display: block;
         }
     }
 }
@@ -523,11 +562,13 @@ $border-color: rgba(196, 196, 196, 0.3);
     background-color: #f5f8ff;
     display: flex;
     justify-content: space-between;
+    align-items: end;
     padding-top: 40px;
 
     &__left {
         width: 480px;
         margin-left: 150px;
+        margin-bottom: 100px;
 
         h1 {
             font-size: 48px;
@@ -547,7 +588,37 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 769px) and (min-width: 377px) {
+    @media only screen and (max-width: 1301px) and (min-width: 901px) {
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        justify-content: center;
+
+        &__left {
+            width: 350px;
+            margin: 50px 10px;
+
+            h1 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 12px;
+            }
+        }
+
+        img {
+            width: 550px;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    @media only screen and (max-width: 901px) and (min-width: 771px) {
         padding-top: 0px;
         position: relative;
         z-index: 2;
@@ -595,7 +666,55 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 376px) {
+    @media only screen and (max-width: 771px) and (min-width: 601px) {
+        padding-top: 0px;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            margin-left: 150px;
+            background-image: url("/images/box.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+        }
+
+        &__left {
+            width: 380px;
+            margin: 0 50px 0 10px;
+            padding-bottom: 200px;
+            position: relative;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        button {
+            font-size: 14px;
+        }
+
+        &__box {
+            img {
+                display: none;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 601px) {
         flex-direction: column;
         align-items: center;
         overflow: hidden;
@@ -646,13 +765,20 @@ $border-color: rgba(196, 196, 196, 0.3);
         display: flex;
         justify-content: space-around;
         margin: 50px;
+        margin-bottom: 5px;
+    }
+
+    &__plan1,
+    &__plan2 {
+        margin: 40px;
+        margin-bottom: 0;
     }
 
     @mixin planStyles($bg-img) {
         display: grid;
         justify-items: center;
         align-items: center;
-        padding: 60px 180px;
+        padding: 60px 150px;
         border: 4px solid $border-color;
         border-radius: 5px;
         background-image: $bg-img;
@@ -696,7 +822,36 @@ $border-color: rgba(196, 196, 196, 0.3);
         text-align: center;
     }
 
-    @media only screen and (max-width: 769px) and (min-width: 377px) {
+    @media only screen and (max-width: 1201px) and (min-width: 901px) {
+        &__title {
+            font-size: 36px;
+        }
+
+        &__plans {
+            margin: 20px;
+        }
+
+        &__plan1,
+        &__plan2 {
+            padding: 30px 80px;
+            margin: 30px;
+            margin-bottom: 0;
+
+            h3 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 28px;
+            }
+        }
+
+        &__planInfo {
+            font-size: 12px;
+        }
+    }
+
+    @media only screen and (max-width: 901px) and (min-width: 771px) {
         &__header {
             display: grid;
             justify-items: center;
@@ -709,6 +864,11 @@ $border-color: rgba(196, 196, 196, 0.3);
 
         &__plans {
             margin: 30px;
+        }
+
+        &__plan1,
+        &__plan2 {
+            margin: 30px 20px 0 2px;
         }
 
         @mixin planStyles($bg-img) {
@@ -743,7 +903,56 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 376px) {
+    @media only screen and (max-width: 771px) and (min-width: 601px) {
+        &__header {
+            display: grid;
+            justify-items: center;
+            margin: 20px 0;
+        }
+
+        &__title {
+            font-size: 42px;
+        }
+
+        &__plan1,
+        &__plan2 {
+            margin: 30px 5px 0 5px;
+        }
+
+        @mixin planStyles($bg-img) {
+            padding: 20px 50px;
+
+            h3 {
+                font-size: 20px;
+                margin: 0 0 5px 0;
+            }
+
+            p {
+                font-size: 24px;
+                margin: 0px;
+            }
+
+            button {
+                margin-top: 10px;
+                font-size: 10px;
+                transform: scale(0.8)
+            }
+        }
+
+        &__plan1 {
+            @include planStyles(url("/left.svg"));
+        }
+
+        &__plan2 {
+            @include planStyles(url("/right.svg"));
+        }
+
+        &__planInfo {
+            font-size: 14px;
+        }
+    }
+
+    @media only screen and (max-width: 601px) {
         margin: 0 10px;
 
         &__plans {
@@ -755,7 +964,7 @@ $border-color: rgba(196, 196, 196, 0.3);
 
         &__plan1,
         &__plan2 {
-            padding: 20px 40px;
+            padding: 18px 30px;
             margin-bottom: 20px;
             width: 100%;
 
@@ -779,6 +988,9 @@ $border-color: rgba(196, 196, 196, 0.3);
 
 // Section 3
 .sec3 {
+    display: grid;
+    justify-content: center;
+    align-items: center;
     margin: 100px 250px;
 
     &__header {
@@ -855,7 +1067,19 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 769px) and (min-width: 377px) {
+    @media only screen and (max-width: 1201px) and (min-width: 901px) {
+        margin: 70px 30px;
+
+        &__title {
+            font-size: 36px;
+        }
+
+        img {
+            transform: scale(0.8);
+        }
+    }
+
+    @media only screen and (max-width: 901px) and (min-width: 771px) {
         margin: 100px 60px;
 
         &__header {
@@ -906,7 +1130,55 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 376px) {
+    @media only screen and (max-width: 771px) and (min-width: 601px) {
+        margin: 100px 10px;
+        display: grid;
+        justify-content: center;
+        overflow: hidden;
+
+        &__header {
+            margin-bottom: 20px;
+        }
+
+        &__title {
+            font-size: 42px;
+        }
+
+        &__work1,
+        &__work2,
+        &__work3 {
+            transform: scale(0.8);
+        }
+
+        &__work1,
+        &__work3 {
+            img {
+                width: 260px;
+                height: auto;
+                object-fit: fill;
+            }
+
+            p {
+                width: 350px;
+            }
+        }
+
+        &__work2 {
+            margin-bottom: 30px;
+
+            img {
+                width: 400px;
+                height: auto;
+                object-fit: fill;
+            }
+
+            h3 {
+                width: 200px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 601px) {
         margin: 100px 0px;
         overflow: hidden;
 
@@ -985,6 +1257,7 @@ $border-color: rgba(196, 196, 196, 0.3);
         font-size: 48px;
         padding-top: 100px;
         text-align: center;
+        margin-bottom: 50px;
     }
 
     &__img-blocks {
@@ -1045,7 +1318,32 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 769px) and (min-width: 377px) {
+    @media only screen and (max-width: 1251px) and (min-width: 901px) {
+        &__img-blocks {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            row-gap: 120px;
+        }
+
+        &__img-block {
+            p {
+                font-size: 24px;
+            }
+
+            img {
+                transform: scale(1.1);
+            }
+        }
+
+        &__squig2 {
+            left: 400px;
+        }
+    }
+
+    @media only screen and (max-width: 901px) and (min-width: 771px) {
         &__title {
             padding-top: 80px;
             margin-bottom: 40px;
@@ -1084,7 +1382,50 @@ $border-color: rgba(196, 196, 196, 0.3);
         }
     }
 
-    @media only screen and (max-width: 376px) {
+    @media only screen and (max-width: 771px) and (min-width: 601px) {
+        &__title {
+            padding-top: 80px;
+            margin-bottom: 40px;
+        }
+
+        &__img-blocks {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            row-gap: 80px;
+            z-index: 0;
+        }
+
+        &__img-block {
+            img {
+                transform: scale(0.85);
+            }
+
+            p {
+                font-size: 20px;
+            }
+        }
+
+        &__squig1,
+        &__squig2 {
+            display: none;
+        }
+
+        &__button {
+            display: grid;
+            justify-content: center;
+            margin-top: 120px;
+            margin-bottom: 0px;
+
+            button {
+                margin: 0;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 601px) {
         &__img-blocks {
             flex-direction: column;
             justify-content: center;
@@ -1110,11 +1451,11 @@ $border-color: rgba(196, 196, 196, 0.3);
 .footer {
     @include footer();
 
-    @media only screen and (max-width: 769px) and (min-width: 377px) {
+    @media only screen and (max-width: 769px) and (min-width: 451px) {
         margin-top: 40px;
     }
 
-    @media only screen and (max-width: 376px) {
+    @media only screen and (max-width: 451px) {
         margin: 15px;
     }
 }
