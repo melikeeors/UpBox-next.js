@@ -73,7 +73,7 @@ export default function PopUp() {
                       message: "First name must be at least 2 characters long"
                     },
                     pattern: {
-                      value: /^(?!.*[qwWQ])[a-zA-ZğüşöçİĞÜŞÖÇ]{2,}(?: [a-zA-ZğüşöçİĞÜŞÖÇ]{2,})?$/,
+                      value: /^(?!.*[qwxWQX])[a-zA-ZğüşöçİĞÜŞÖÇ]{2,}(?: [a-zA-ZğüşöçİĞÜŞÖÇ]{2,})?$/,
                       message: "First name can only contain two words and cannot include special characters"
                     }
                   })}
@@ -94,7 +94,7 @@ export default function PopUp() {
                       message: "Last name must be at least 2 characters long"
                     },
                     pattern: {
-                      value: /^(?!.*[qwWQ])[a-zA-ZğüşöçİĞÜŞÖÇ]{2,}(?: [a-zA-ZğüşöçİĞÜŞÖÇ]{2,})?$/,
+                      value: /^(?!.*[qwxWQX])[a-zA-ZğüşöçİĞÜŞÖÇ]{2,}(?: [a-zA-ZğüşöçİĞÜŞÖÇ]{2,})?$/,
                       message: "Last name can only contain two words and cannot include special characters"
                     }
                   })}
@@ -144,11 +144,13 @@ export default function PopUp() {
                 <label htmlFor="age">Age</label>
                 <input
                   className="pop-up__input-age"
-                  type="number"
+                  type="text"
                   placeholder="Enter your age"
                   {...register("age", {
                     required: "Age is required",
-                    min: { value: 18, message: "You must be at least 18 years old" },
+                    min: {
+                      value: 18, message: "You must be at least 18 years old"
+                    },
                     validate: {
                       matchBirthDate: value => {
                         const today = new Date();
