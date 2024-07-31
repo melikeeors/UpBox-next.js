@@ -68,9 +68,13 @@ export default function PopUp() {
                   placeholder="Enter your first name"
                   {...register("firstName", {
                     required: "First name is required",
+                    minLength: {
+                      value: 2,
+                      message: "First name must be at least 2 characters long"
+                    },
                     pattern: {
-                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ]+$/,
-                      message: "First name must contain only letters"
+                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ[^QqWw]]+$/,
+                      message: "First name can only contain letters and cannot include special characters"
                     }
                   })}
                 />
@@ -85,13 +89,17 @@ export default function PopUp() {
                   placeholder="Enter your last name"
                   {...register("lastName", {
                     required: "Last name is required",
+                    minLength: {
+                      value: 2,
+                      message: "Last name must be at least 2 characters long"
+                    },
                     pattern: {
-                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ]+$/,
-                      message: "Last name must contain only letters"
+                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ[^QqWw]]+$/,
+                      message: "Last name can only contain letters and cannot include special characters"
                     }
                   })}
                 />
-               <p className="pop-up__validations">{errors.lastName?.message}</p>
+                <p className="pop-up__validations">{errors.lastName?.message}</p>
               </div>
 
               <div className="pop-up__input-field">
@@ -108,7 +116,7 @@ export default function PopUp() {
                     }
                   })}
                 />
-               <p className="pop-up__validations">{errors.email?.message}</p>
+                <p className="pop-up__validations">{errors.email?.message}</p>
               </div>
 
               <div className="pop-up__input-field">
@@ -129,7 +137,7 @@ export default function PopUp() {
                     }
                   })}
                 />
-               <p className="pop-up__validations">{errors.password?.message}</p>
+                <p className="pop-up__validations">{errors.password?.message}</p>
               </div>
 
               <div className="pop-up__input-field">
@@ -215,14 +223,26 @@ export default function PopUp() {
                   placeholder="Enter your identity number"
                   {...register("identityNumber", {
                     required: "Identity number is required",
-                    pattern: {
-                      value: /^[0-9]{11}$/,
-                      message: "Please enter a valid identity number"
+                    validate: (value) => {
+                      if (value.length !== 11) return "Identity number must be 11 digits long";
+                      if (!/^[1-9][0-9]{10}$/.test(value)) return "Identity number must be numeric and cannot start with 0";
+
+                      const digits = value.split('').map(Number);
+
+                      const sumOdd = digits[0] + digits[2] + digits[4] + digits[6] + digits[8];
+                      const sumEven = digits[1] + digits[3] + digits[5] + digits[7];
+                      const sumTotal = sumOdd + sumEven + digits[9];
+
+                      if ((sumOdd * 7 - sumEven) % 10 !== digits[9]) return "Invalid identity number";
+                      if (sumTotal % 10 !== digits[10]) return "Invalid identity number";
+
+                      return true;
                     }
                   })}
                 />
                 <p className="pop-up__validations">{errors.identityNumber?.message}</p>
               </div>
+
             </form>
           </div>
         </div>
