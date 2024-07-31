@@ -13,24 +13,24 @@ export default function Sec4() {
       <h1 className="sec4__title">Social Posts</h1>
       <div className="sec4__img-blocks">
         <div className="sec4__img-block">
-          <Image src={img1}></Image>
+          <Image src={img1} alt="sec4-img1"></Image>
           <p>How to rock the lip look that turns heads</p>
         </div>
         <div className="sec4__img-block">
-          <Image src={img2}></Image>
+          <Image src={img2} alt="sec4-img2"></Image>
           <p>Find the perfect shade for the season</p>
         </div>
         <div className="sec4__img-block">
-          <Image src={img3}></Image>
+          <Image src={img3} alt="sec4-img3"></Image>
           <p>The 5 eye shadow secrets you never knew</p>
         </div>
         <div className="sec4__img-block">
-          <Image src={img4}></Image>
+          <Image src={img4} alt="sec4-img4"></Image>
           <p>The pro-tips for at home hair dying</p>
         </div>
       </div>
-      <Image className="sec4__squig1" src={squig1}></Image>
-      <Image className="sec4__squig2" src={squig2}></Image>
+      <Image className="sec4__squig1" src={squig1} alt="sec4-squig1"></Image>
+      <Image className="sec4__squig2" src={squig2} alt="sec4-squig2"></Image>
       <div className="sec4__button">
         <button>FOLLOW US ON INSTAGRAM</button>
       </div>

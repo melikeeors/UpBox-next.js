@@ -14,10 +14,10 @@ export default function Navbar() {
 
   return (
     <div className="navbar">
-      <Image className="navbar__topbar" src={topbar}></Image>
+      <Image className="navbar__topbar" src={topbar} alt='navbar-img'></Image>
       <div className="navbar__group">
         <div className="navbar__logoGroup">
-          <Image className="navbar__logo" src={upboxLogo}></Image>
+          <Image className="navbar__logo" src={upboxLogo} alt='navbar-logo'></Image>
           <h3 className="navbar__title">UPBOX</h3>
           <a className="navbar__menu-button" onClick={toggleMenu}>
             <IoMdMenu />

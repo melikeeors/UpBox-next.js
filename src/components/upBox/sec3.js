@@ -11,11 +11,11 @@ export default function Sec3() {
     <div className="sec3">
       <div className="sec3__header">
         <h1 className="sec3__title">How it works?</h1>
-        <Image src={underline1}></Image>
+        <Image src={underline1} alt="underline"></Image>
       </div>
       <div className="sec3__work1">
         <div className="sec3__img">
-          <Image src={work1}></Image>
+          <Image src={work1} alt="sec3-img1"></Image>
         </div>
         <div className="sec3__text1">
           <h3>Setup your profile & preferences</h3>
@@ -25,8 +25,8 @@ export default function Sec3() {
       </div>
       <div className="sec3__work2">
         <div className="sec3__img">
-          <Image className="sec3__2" src={work2}></Image>
-          <Image className="sec3__2-mobile" src={work2Mobile}></Image>
+          <Image className="sec3__2" src={work2} alt="sec3-img2"></Image>
+          <Image className="sec3__2-mobile" src={work2Mobile} alt="sec3-img2-mobile"></Image>
         </div>
         <div className="sec3__text2">
           <h3>Review your custom box</h3>
@@ -36,7 +36,7 @@ export default function Sec3() {
       </div>
       <div className="sec3__work3">
         <div className="sec3__img">
-          <Image src={work3}></Image>
+          <Image src={work3} alt="sec3-img3"></Image>
         </div>
         <div className="sec3__text3">
           <h3>Try it on at home</h3>

@@ -12,7 +12,7 @@ export default function Footer() {
     <div className="footer">
       <div className="footer__top">
         <div className="footer__logoGroup">
-          <Image className="footer__logo" src={upboxLogo} alt="Upbox Logo" />
+          <Image className="footer__logo" src={upboxLogo} alt="upbox-logo" />
           <h5>UPBOX</h5>
         </div>
         <div className="footer__social">

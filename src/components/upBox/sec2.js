@@ -7,7 +7,7 @@ export default function Sec2() {
     <div className="sec2">
       <div className="sec2__header">
         <h1 className="sec2__title">Pick your plan</h1>
-        <Image src={underline}></Image>
+        <Image src={underline} alt="underline"></Image>
       </div>
       <div className="sec2__plans">
         <div className="sec2__plan1">

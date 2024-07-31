@@ -14,7 +14,7 @@ export default function Hero() {
         <button>SIGN UP &gt;</button>
       </div>
       <div className="hero__box">
-        <Image src={box}></Image>
+        <Image src={box} alt="hero-img"></Image>
       </div>
     </div>
   );
