@@ -12,7 +12,7 @@ export default function PopUp() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Form Submtted", data);
+    console.log("Form Submitted", data);
   };
 
   // Bugünün tarihini YYYY-MM-DD formatında almak için
