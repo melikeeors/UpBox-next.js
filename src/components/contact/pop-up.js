@@ -73,8 +73,8 @@ export default function PopUp() {
                       message: "First name must be at least 2 characters long"
                     },
                     pattern: {
-                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ[^QqWw]]+$/,
-                      message: "First name can only contain letters and cannot include special characters"
+                      value: /^(?!.*[qwWQ])[a-zA-ZğüşöçİĞÜŞÖÇ]{2,}(?: [a-zA-ZğüşöçİĞÜŞÖÇ]{2,})?$/,
+                      message: "First name can only contain two words and cannot include special characters"
                     }
                   })}
                 />
@@ -94,8 +94,8 @@ export default function PopUp() {
                       message: "Last name must be at least 2 characters long"
                     },
                     pattern: {
-                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ[^QqWw]]+$/,
-                      message: "Last name can only contain letters and cannot include special characters"
+                      value: /^(?!.*[qwWQ])[a-zA-ZğüşöçİĞÜŞÖÇ]{2,}(?: [a-zA-ZğüşöçİĞÜŞÖÇ]{2,})?$/,
+                      message: "Last name can only contain two words and cannot include special characters"
                     }
                   })}
                 />
