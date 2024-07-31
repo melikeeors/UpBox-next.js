@@ -30,7 +30,7 @@ button:hover {
 // Pop up
 .pop-up {
     letter-spacing: 1px;
-    height: 750px;
+    height: fit-content;
 
     p {
         margin: 0;
@@ -51,7 +51,7 @@ button:hover {
         background-position: center center;
         width: 100%;
         object-fit: cover;
-        height: 113%;
+        height: 150%;
     }
 
     &__center {
@@ -59,20 +59,31 @@ button:hover {
         justify-content: center;
         align-items: center;
         margin-bottom: 100px;
+        margin-top: 50px;
         background-color: rgba(255, 255, 255, 0.6);
         backdrop-filter: blur(10px);
         width: 1100px;
-        height: 560px;
+        height: fit-content;
+    }
+
+    img {
+        margin: 60px 20px 10px 20px;
+
+        &__formImg2 {
+            display: none;
+        }
     }
 
     &__left-side {
-        margin: 0 20px;
+        display: grid;
+        justify-items: center;
+        order: 2;
     }
 
     &__right-side {
         display: grid;
         align-items: center;
-        margin: 0 20px;
+        margin: 40px 20px;
 
         h1 {
             font-size: 46px;
@@ -80,6 +91,14 @@ button:hover {
             margin: 0;
             padding: 0;
         }
+    }
+
+    &__firstForm {
+        margin-bottom: 40px;
+    }
+
+    &__formImg2 {
+        display: none;
     }
 
     &__input-field,
@@ -90,7 +109,14 @@ button:hover {
     }
 
     &__input-email,
-    &__input-text {
+    &__input-password,
+    &__input-first-name,
+    &__input-last-name,
+    &__input-text,
+    &__input-age,
+    &__input-birth-date,
+    &__input-phone,
+    &__input-id-number {
         border: 3px solid #e7e7e7;
         border-radius: 5px;
         width: 419px;
@@ -101,12 +127,20 @@ button:hover {
         font-size: 14px;
     }
 
-    &__input-email {
+    &__input-email,
+    &__input-password,
+    &__input-first-name,
+    &__input-last-name,
+    &__input-age,
+    &__input-birth-date,
+    &__input-phone,
+    &__input-id-number {
         height: 40px;
         padding-left: 10px;
     }
 
     &__input-text {
+        width: 500px;
         height: 134px;
         resize: none;
         font-weight: 500;
@@ -118,6 +152,11 @@ button:hover {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+
+        label {
+            display: flex;
+            align-items: center;
+        }
     }
 
     &__checkbox {
@@ -154,23 +193,59 @@ button:hover {
 
     &__validations,
     &__confirmations {
-        display: none;
         font-size: 12px;
         font-weight: 700;
         letter-spacing: normal;
     }
 
+    &__validations {
+        color: #ff0340;
+    }
+
+    &__confirmation {
+        display: none;
+    }
+
+    &__confirmation.submitted {
+        display: block;
+    }
+
     button {
         @include pinkButton();
-        margin-bottom: 40px;
+        position: relative;
         font-size: 12px;
         border-radius: 10px;
-        padding: 7.5px 50px;
+        margin-top: 10px;
+        padding: 10px 50px;
+    }
+
+    button::after {
+        content: "Submit"; /* Buton içine eklenecek yazı */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Yazıyı ortalama */
+        color: white;
+        z-index: 1;
+    }
+
+    button.submitted {
+        border-color: #ff0340;
+        background-color: white;
+
+        &::after {
+            content: "Sent!"; /* Buton içine eklenecek yazı */
+            color: #ff0340;
+        }
     }
 
     @media only screen and (max-width: 1201px) and (min-width: 901px) {
         &__center {
             transform: scale(0.8);
+        }
+
+        &__left-side {
+            margin: 0 20px 30px 20px;
         }
     }
 
@@ -178,29 +253,48 @@ button:hover {
         height: fit-content;
 
         &__container {
-            height: 844px;
+            height: fit-content;
         }
 
         &__center {
-            margin: 0 15px 70px 15px;
+            margin: 40px 15px;
             width: 734px;
+            height: fit-content;
+            align-items: center;
         }
 
         &__left-side {
+            align-items: center;
             width: 368px;
-            height: 481px;
+            height: fit-content;
+            margin: 30px 20px;
 
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                margin-bottom: 20px;
             }
         }
 
         &__right-side {
+            margin: 30px 20px;
+
             h1 {
                 font-size: 42px;
             }
+        }
+
+        &__firstForm {
+            margin-top: 20px;
+        }
+
+        &__formImg1 {
+            display: block;
+        }
+
+        &__formImg2 {
+            display: none;
         }
 
         &__input-field,
@@ -209,17 +303,19 @@ button:hover {
         }
 
         &__input-email,
-        &__input-text {
+        &__input-password,
+        &__input-first-name,
+        &__input-last-name,
+        &__input-age,
+        &__input-birth-date,
+        &__input-phone,
+        &__input-id-number {
             width: 257px;
         }
 
         &__input-text {
+            width: 345px;
             height: 134px;
-        }
-
-        &__validations,
-        &__confirmations {
-            color: #ff0340;
         }
 
         button {
@@ -230,6 +326,11 @@ button:hover {
     // Tablet
     @media only screen and (max-width: 771px) and (min-width: 601px) {
         height: fit-content;
+
+        img {
+            transform: scale(0.9);
+            margin: 0px 10px;
+        }
 
         &__center {
             display: grid;
@@ -243,12 +344,30 @@ button:hover {
 
         &__left-side {
             margin: 20px;
+            margin-top: 0;
         }
 
         &__right-side {
+            margin-bottom: 0;
+
             h1 {
                 font-size: 42px;
             }
+        }
+
+        &__secondForm {
+            display: grid;
+            justify-items: center;
+        }
+
+        &__formImg1 {
+            display: none;
+        }
+
+        &__formImg2 {
+            display: block;
+            transform: scale(0.9);
+            margin: 0px 10px;
         }
 
         &__input-field,
@@ -256,18 +375,9 @@ button:hover {
             margin: 5px 0;
         }
 
-        &__input-email,
-        &__input-text {
-            width: 257px;
-        }
-
         &__input-text {
             height: 134px;
-        }
-
-        &__validations,
-        &__confirmations {
-            color: #ff0340;
+            width: 419px;
         }
 
         button {
@@ -278,19 +388,45 @@ button:hover {
     @media only screen and (max-width: 601px) and (min-width: 501px) {
         height: fit-content;
 
+        img {
+            margin: 0px;
+        }
+
         &__center {
             display: grid;
             justify-content: center;
             align-items: center;
             justify-items: center;
             height: fit-content;
-            transform: scale(0.8);
+            transform: scale(0.9);
             margin: 15px 0;
         }
 
         &__left-side {
-            transform: scale(0.8);
             margin: 20px;
+            margin-top: 0;
+
+            textarea {
+                width: 410px;
+            }
+        }
+
+        &__secondForm {
+            display: grid;
+            justify-items: center;
+        }
+
+        &__right-side {
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        &__formImg1 {
+            display: none;
+        }
+
+        &__formImg2 {
+            display: block;
         }
     }
 
@@ -298,21 +434,24 @@ button:hover {
     @media only screen and (max-width: 501px) {
         display: flex;
         justify-content: center;
-        height: 725px;
+
+        img {
+            margin: 0 0 20px 0;
+        }
 
         &__container {
             align-items: flex-start;
-            height: 100%;
+            height: fit-content;
         }
 
         &__center {
             display: grid;
             justify-content: center;
-            align-items: center;
+            align-items: start;
             justify-items: center;
             margin-top: 75px;
             width: 341px;
-            height: 725px;
+            height: 100%;
         }
 
         &__bg {
@@ -321,27 +460,47 @@ button:hover {
 
         &__left-side {
             margin: 20px;
+            margin-top: 0;
+        }
 
-            img {
-                width: 266px;
-                height: 158px;
-                object-fit: cover;
-            }
+        &__secondForm {
+            display: grid;
+            justify-items: center;
         }
 
         &__right-side {
+            margin-bottom: 0;
+
             h1 {
                 font-size: 42px;
             }
         }
 
+        &__formImg1 {
+            display: none;
+        }
+
+        &__formImg2 {
+            display: block;
+            width: 266px;
+            height: 158px;
+            object-fit: cover;
+        }
+
         &__input-field,
-        &__text-field,
+        &__text-field2,
         &__checkbox-field {
-            margin-bottom: 25px;
+            margin-bottom: 5px;
         }
 
         &__input-email,
+        &__input-password,
+        &__input-first-name,
+        &__input-last-name,
+        &__input-age,
+        &__input-birth-date,
+        &__input-phone,
+        &__input-id-number,
         &__input-text {
             width: 265px;
         }
@@ -355,7 +514,5 @@ button:hover {
 // Footer
 .footer {
     @include footer();
-    position: relative;
     margin: 25px;
-    margin-top: 125px;
 }

@@ -132,12 +132,6 @@ $border-color: rgba(196, 196, 196, 0.3);
         li {
             padding: 10px 5px;
             background-color: white;
-            //border-bottom: 1px solid $border-color;
-
-            &:hover {
-                font-style: italic;
-            }
-
             &:last-child {
                 border-bottom: none;
             }
@@ -498,7 +492,6 @@ $border-color: rgba(196, 196, 196, 0.3);
 
     @media only screen and (max-width: 501px) {
         margin: 15px;
-        margin-top: 110px;
 
         &__social {
             display: none;

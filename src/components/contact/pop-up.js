@@ -1,42 +1,232 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import Image from 'next/image';
-import leftSide from '/public/images/leftSide.svg';
-import bg from '/public/images/bg.svg'
+import formImg from '/public/images/leftSide.svg';
 
 export default function PopUp() {
-    return (
-        <section className="pop-up">
-            <div className="pop-up__container">
-                {/*<Image className="pop-up__bg" src={bg} layout="fill"></Image>*/}
-                <div className="pop-up__center">
-                    <div className="pop-up__left-side">
-                        <Image src={leftSide}></Image>
-                    </div>
-                    <div className="pop-up__right-side">
-                        <h1>Let's Chat!</h1>
-                        <div className="pop-up__input-field">
-                            <label>Email</label>
-                            <input className="pop-up__input-email" type="email" placeholder="Enter your email"></input>
-                            <p className="pop-up__validations">Please enter a valid email address</p>
-                            <p className="pop-up__validations">This field is required</p>
-                        </div>
-                        <div className="pop-up__text-field">
-                            <label>Message</label>
-                            <textarea className="pop-up__input-text" type="text" placeholder="Enter your message here"></textarea>
-                            <p className="pop-up__validations">This field is required</p>
-                        </div>
-                        <div className="pop-up__checkbox-field">
-                            <label>Opt-in to newsletter</label>
-                            <input className="pop-up__checkbox" type="checkbox"></input>
-                            <p className="pop-up__validations">This field is required</p>
-                        </div>
-                        <div>
-                            <button className="pop-up__button">Submit</button>
-                        </div>
-                        <p className="pop-up__confirmations">Thanks! We’ll get back to you soon.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitSuccessful }
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Form Submtted", data);
+  };
+
+  // Bugünün tarihini YYYY-MM-DD formatında almak için
+  const today = new Date().toISOString().split("T")[0];
+
+  return (
+    <section className="pop-up">
+      <div className="pop-up__container">
+        <div className="pop-up__center">
+          <div className="pop-up__left-side">
+            <Image className="pop-up__formImg1" src={formImg} alt="Form Image" />
+
+            <form className="pop-up__firstForm" onSubmit={handleSubmit(onSubmit)}>
+              <div className="pop-up__text-field">
+                <label htmlFor="message" or>Message</label>
+                <textarea
+                  className="pop-up__input-text"
+                  placeholder="Enter your message here"
+                  {...register("message", { required: "Message is required" })}
+                />
+                <p className="pop-up__validations">{errors.message?.message}</p>
+              </div>
+
+              <div className="pop-up__checkbox-field">
+                <label htmlFor="checkbox">
+                  <input
+                    className="pop-up__checkbox"
+                    type="checkbox"
+                    {...register("newsletter", { required: "You must opt-in to the newsletter" })}
+                  />
+                  Opt-in to newsletter
+                </label>
+                <p className="pop-up__validations">{errors.newsletter?.message}</p>
+              </div>
+
+              <div>
+                <button className={`pop-up__button ${isSubmitSuccessful ? 'submitted' : ''}`} type="submit">Submit</button>
+                <p className={`pop-up__confirmation ${isSubmitSuccessful ? 'submitted' : ''}`}>Thanks! We’ll get back to you soon.</p>
+              </div>
+            </form>
+          </div>
+
+          <div className="pop-up__right-side">
+            <form className="pop-up__secondForm" onSubmit={handleSubmit(onSubmit)}>
+              <Image className="pop-up__formImg2" src={formImg} alt="Form Image" />
+              <h1>Let's Chat!</h1>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="firstname">First Name</label>
+                <input
+                  className="pop-up__input-first-name"
+                  type="text"
+                  placeholder="Enter your first name"
+                  {...register("firstName", {
+                    required: "First name is required",
+                    pattern: {
+                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ]+$/,
+                      message: "First name must contain only letters"
+                    }
+                  })}
+                />
+                <p className="pop-up__validations">{errors.firstName?.message}</p>
+              </div>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="lastname">Last Name</label>
+                <input
+                  className="pop-up__input-last-name"
+                  type="text"
+                  placeholder="Enter your last name"
+                  {...register("lastName", {
+                    required: "Last name is required",
+                    pattern: {
+                      value: /^[a-zA-ZğüşöçİĞÜŞÖÇ]+$/,
+                      message: "Last name must contain only letters"
+                    }
+                  })}
+                />
+               <p className="pop-up__validations">{errors.lastName?.message}</p>
+              </div>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="email">Email</label>
+                <input
+                  className="pop-up__input-email"
+                  type="email"
+                  placeholder="Enter your email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                      message: "Please enter a valid email address"
+                    }
+                  })}
+                />
+               <p className="pop-up__validations">{errors.email?.message}</p>
+              </div>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="password">Password</label>
+                <input
+                  className="pop-up__input-password"
+                  type="password"
+                  placeholder="Enter your password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be at least 8 characters long"
+                    },
+                    pattern: {
+                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/,
+                      message: "Password must contain at least one uppercase, one lowercase letter and one special character"
+                    }
+                  })}
+                />
+               <p className="pop-up__validations">{errors.password?.message}</p>
+              </div>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="age">Age</label>
+                <input
+                  className="pop-up__input-age"
+                  type="number"
+                  placeholder="Enter your age"
+                  {...register("age", {
+                    required: "Age is required",
+                    min: { value: 18, message: "You must be at least 18 years old" },
+                    validate: {
+                      matchBirthDate: value => {
+                        const today = new Date();
+                        const birthDate = new Date(watch('birthDate'));
+                        let calculatedAge = today.getFullYear() - birthDate.getFullYear();
+                        const monthDifference = today.getMonth() - birthDate.getMonth();
+                        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                          calculatedAge--;
+                        }
+                        return calculatedAge === parseInt(value) || "Age does not match birth date";
+                      }
+                    },
+                    pattern: {
+                      value: /^[0-9]*$/,
+                      message: "Age must be a number"
+                    }
+                  })}
+                />
+                <p className="pop-up__validations">{errors.age?.message}</p>
+              </div>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="birthDate">Birth Date</label>
+                <input
+                  className="pop-up__input-birth-date"
+                  type="date"
+                  max={today} // Bugünün tarihinden sonraki tarihler seçilemez
+                  {...register("birthDate", {
+                    required: "Birth date is required",
+                    validate: {
+                      over18: value => {
+                        const today = new Date();
+                        const birthDate = new Date(value);
+                        let age = today.getFullYear() - birthDate.getFullYear();
+                        const monthDifference = today.getMonth() - birthDate.getMonth();
+                        if (
+                          monthDifference < 0 ||
+                          (monthDifference === 0 && today.getDate() < birthDate.getDate())
+                        ) {
+                          age--;
+                        }
+                        return age >= 18 || "You must be at least 18 years old";
+                      }
+                    }
+                  })}
+                />
+                <p className="pop-up__validations">{errors.birthDate?.message}</p>
+              </div>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="phone">Phone</label>
+                <input
+                  className="pop-up__input-phone"
+                  type="tel"
+                  placeholder="Enter your phone number (5XXXXXXXXX)"
+                  {...register("phone", {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message: "Please enter a valid phone number"
+                    }
+                  })}
+                />
+                <p className="pop-up__validations">{errors.phone?.message}</p>
+              </div>
+
+              <div className="pop-up__input-field">
+                <label htmlFor="id">Identity Number</label>
+                <input
+                  className="pop-up__input-id-number"
+                  type="text"
+                  placeholder="Enter your identity number"
+                  {...register("identityNumber", {
+                    required: "Identity number is required",
+                    pattern: {
+                      value: /^[0-9]{11}$/,
+                      message: "Please enter a valid identity number"
+                    }
+                  })}
+                />
+                <p className="pop-up__validations">{errors.identityNumber?.message}</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section >
+  );
 }
